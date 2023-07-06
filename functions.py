@@ -61,7 +61,7 @@ def createAccount(name):
         print("Password confirmation Error!")
         return False, ""
 
-# Prints menu for the user
+# Prints menu for the user once logged in successfully.
 def userMessage():
     print("\n<=========== List of Commands ======================================>\n")
     print("view all\t\t-\t View all items")
