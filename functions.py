@@ -6,6 +6,8 @@ from datetime import datetime
 import argon2
 from getpass import getpass
 
+## TODO: Proper usage of argon2 to handle password entry without breaking the entire code
+
 def login():
     username = input("\nUsername: ") # Get username
 
