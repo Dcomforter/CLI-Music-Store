@@ -3,10 +3,10 @@ import hashlib # For hashing passwords
 import pandas as pd # For deleting rows easily
 import os
 from datetime import datetime
-import argon2
+#import argon2
 from getpass import getpass
 
-## TODO: Proper usage of argon2 to handle password entry without breaking the entire code
+## TODO: Proper usage of argon2 to handle password encryption without breaking the entire code
 
 def login():
     username = input("\nUsername: ") # Get username
