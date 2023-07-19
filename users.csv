@@ -2,5 +2,12 @@ Username,Password,Address,CardNum
 Israel,5a548c2f5875f10bf5614b7c258876cf,"2500, Mercy Way, Nashville, TN",5534661277459965
 Precious,6227b675ef8acc58e9e88e5036a07abb,1300 Old Highway 12,444639756308
 Babatunde,f55f18b1774b519deef935b955416b87,"5350 Belford Park, Dallas, TX",5556320147856589
-Wuraola,497acf2213010458bbf87fe602acbb09,1500 Jones Drive,6935156232547548
+Wuraola,497acf2213010458bbf87fe602acbb09,"1500 Grace Circle, Houston, TX",6935156232547548
 Olamide,df8fede7ff71608e24a5576326e41c75,"columbus street, MS",345678694535674
+Username,Password,Address,CardNum
+Israel,"$argon2id$v=19$m=65536,t=3,p=4$l4SnPI/SSXGmeYz/uWFA+Q$kZF+i/SOJ2Lederye5R6Wfwr5mtBcolDr9O6Syag/pY","2500, Mercy Way, Nashville, TN",5534661277459965
+Precious,"$argon2id$v=19$m=65536,t=3,p=4$1ufYre0eTAv94o1ynf6dKg$IPM8LIwM4fOO4l09U3GZ+qOD/2itTvCTMGJbPzPCA6E",1300 Old Highway 12,444639756308
+Babatunde,"$argon2id$v=19$m=65536,t=3,p=4$3EhpowpBZUZTj05NLRwl7w$fosMdiiZDhN68MN5Od+tcN9ah758TfYwPrQ0iuhger8","5350 Belford Park, Dallas, TX",5556320147856589
+Wuraola,"$argon2id$v=19$m=65536,t=3,p=4$ihtSlnPQx1pSWIvQVLfRSw$VgnrcTW5ofhvERVxxrOFQpi8FDYwghTqrCcBoKmVBBY","1500 Grace Circle, Houston, TX",6935156232547548
+Olamide,"$argon2id$v=19$m=65536,t=3,p=4$mUHf0AAJURf27lF7IlDWHA$J92ojjtgSz5cyFRt6SPRJgFf+rEQZrEE9trgdmdqB5w","7000 Favour Avenue, Omaha, NE",4785652325419456
+Dcomforter,"$argon2id$v=19$m=65536,t=3,p=4$vqXw1MZUNKWKFIBk/DxjmQ$c+DNJ87FyP1mpYGrbG/w+GEzj3XhENiyhYnbiBTZNnQ","5874 Grace Circle, Nashville, TN",4514637896584125

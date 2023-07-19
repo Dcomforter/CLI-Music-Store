@@ -1,42 +1,46 @@
 import csv # For reading and writing into csv files
-import hashlib # For hashing passwords
+#import hashlib # For hashing passwords
 import pandas as pd # For deleting rows easily
 import os
 from datetime import datetime
-#import argon2
-from getpass import getpass
+import argon2 # A better way to hash passwords
+from getpass import getpass # For masking passwords on the screen
 
 ## TODO: This week: Implement proper usage of argon2 to handle password encryption without breaking the entire code
 
 def login():
-    username = input("\nUsername: ") # Get username
+    username = input("\nUsername: ")  # Get username
 
-    user_found = False # Start with user not found
-    correct_password = "" # Initital password
-    
+    user_found = False  # Start with user not found
+    correct_password = ""  # Initial password
+
     # Check if the user exists in the database
-    with open ('users.csv') as user_file:
+    with open('users.csv') as user_file:
         csv_reader = csv.reader(user_file, delimiter=',')
         for row in csv_reader:
-            if username == row[0]: # User found
+            if username == row[0]:  # User found
                 user_found = True
-                correct_password = row[1] # Get the password for that user
+                correct_password = row[1]  # Get the password hash for that user
 
     # Ask for password if user is found.
     if user_found:
-        password = getpass("Password: ") # Get user's password
-        pass_hash = hashlib.md5(password.encode("utf-8")).hexdigest() # Generate password hash
-        
-        if pass_hash == correct_password:
+        password = getpass("Password: ")  # Get user's password
+
+        try:
+            # Verify password using Argon2
+            argon2.PasswordHasher().verify(correct_password, password.encode("utf-8"))
             return True, username
-        else:
-            print ("\nWrong password. Please enter the username and correct password.")
-            return login()    
-        
-    else:  # Ask for account creation if user not found  
+        except argon2.exceptions.VerifyMismatchError:
+            print("\nWrong password. Please enter the username and correct password.")
+            return login()
+        except argon2.exceptions.VerificationError:
+            print("\nFailed to verify the password.")
+            return login()
+
+    else:  # Ask for account creation if user not found
         create_user = input("\nUser does not exist.\nDo you want to create one? (y/n): ")
         if create_user.lower() == 'y':
-            return createAccount(username) # Call createAccount function to create an account
+            return createAccount(username)  # Call createAccount function to create an account
         else:
             return False, ""
 
@@ -46,8 +50,8 @@ def createAccount(name):
     confirm_passphrase = getpass("Confirm Password: ")
 
     if passphrase == confirm_passphrase:
-        pass_hash = hashlib.md5(passphrase.encode("utf-8")).hexdigest() # Generate password hash
-        #pass_hash = argon2.PasswordHasher().hash(passphrase)
+        #pass_hash = hashlib.md5(passphrase.encode("utf-8")).hexdigest() # Generate password hash
+        pass_hash = argon2.PasswordHasher().hash(passphrase)
 
         address = input("Enter shipping address: ")
         card = input("Enter card number: ")
@@ -176,7 +180,7 @@ def userMenu(user):
             # search through users.csv for that user
                 # once found edit shipping and payment info
             editUser(user)
-            print("Edited successfully.")
+            print(f"\n{user}'s Account Edited successfully.")
             print()
 
         elif command[0] == "delete":
@@ -187,7 +191,7 @@ def userMenu(user):
             # search through orders.csv for the user
                 #remove that data
             deleteAcc(user)
-            print("Account deleted")
+            print(f"\n{user}'s Account Deleted Successfully.")
             logged_in = False
 
         elif command[0] == "logout":
@@ -311,7 +315,6 @@ def editUser(user):
     # Remove the old file and rename the new file.
     os.remove('users.csv')
     os.rename('usersBackup.csv', 'users.csv')
-
 
 # Delete all data for that user
 def deleteAcc(user):

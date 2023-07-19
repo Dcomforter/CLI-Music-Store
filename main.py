@@ -1,3 +1,4 @@
+# This is a command-line interface music store
 from functions import login
 from functions import userMenu
 
@@ -8,6 +9,7 @@ def mainMessage():
     print("Login\t\t-\t Log In User/Create an account")
     print("Exit\t\t-\t Exit the program\n")
 
+# The program starts from here
 def main():
     mainMessage()
 
