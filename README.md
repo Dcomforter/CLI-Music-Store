@@ -35,3 +35,8 @@ Anjal Gajurel, Israel Okuneye, Anup Paudel, Marasia Harris
 
 ## Current Contributor
 Israel Okuneye
+
+## Improvements Made
+* Refactored the code to use Argon2 instead of Hashlib for password hashing.
+* Implemented the use of Getpass to mask password entry at login, instead of the initial clear text entry.
+* Improved on the Flow Control and also the User Experience of the program at large. 
