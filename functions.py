@@ -173,7 +173,7 @@ def userMenu(user):
 
         elif command[0] == "checkout":
             checkout(user)
-            print(f"\n{user} checked out successfully.")
+            #print(f"\n{user} Checked Out Successfully.")
             print()
 
         elif command[0] == "edit":
@@ -238,11 +238,21 @@ def rmCart(user, item):
     os.rename('cartsBackup.csv', 'carts.csv')            
 
 # Checkout from cart
-def checkout(user):
-    #search through cart for that user
-    #remove from cart
-    # edit inventory
-    # add to order history
+def checkout(user):    
+    # Search through cart for that user and check if it's empty
+    found_user_cart = False
+    with open('carts.csv') as readFile:
+        reader = csv.reader(readFile, delimiter=',')
+        for row in reader:
+            if row[0] == user:
+                found_user_cart = True
+                break
+    
+    # If user not found, nothing to check out
+    if not found_user_cart:
+        print("\nYour cart is empty. Nothing to check out. Kindly add items to your cart first.")
+        return
+    
     with open('carts.csv') as readFile: # Read the file
         reader = csv.reader(readFile, delimiter=',')
         for row in reader:
@@ -261,6 +271,7 @@ def checkout(user):
     # Remove the old file and rename the new file.
     os.remove('carts.csv')
     os.rename('cartsBackup.csv', 'carts.csv')
+    print(f"\n{user} Checked Out Successfully.")
 
 # Edits the inventory based on quantity provided
 def editInventory(id, quantity):
