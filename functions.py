@@ -239,7 +239,7 @@ def rmCart(user, item):
 
 # Checkout from cart
 def checkout(user):    
-    # Search through cart for that user and check if it's empty
+    # Search through cart for user and check if cart's empty
     found_user_cart = False
     with open('carts.csv') as readFile:
         reader = csv.reader(readFile, delimiter=',')
